@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services: 
+  - docker
+
+before_install:
+  - docker build -t nobbs2a/docker-react -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true nobbs2a/docker-react npm run test -- --coverage
